@@ -1,0 +1,7 @@
+.messages {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 20px;
+}

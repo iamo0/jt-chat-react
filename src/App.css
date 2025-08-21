@@ -1,0 +1,28 @@
+.page-header {
+  background: #333;
+  box-sizing: border-box;
+  color: #fff;
+  height: 10vh;
+}
+
+.page-title {
+  font-weight: 300;
+  margin: 0;
+  text-align: center;
+}
+
+.page-main {
+  box-sizing: border-box;
+  height: 90vh;
+}
+
+.page-messages {
+  box-sizing: border-box;
+  height: 90%;
+  overflow: auto;
+}
+
+.page-form {
+  box-sizing: border-box;
+  height: 10%;
+}

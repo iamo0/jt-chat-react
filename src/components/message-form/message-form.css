@@ -1,0 +1,21 @@
+.message-form-container {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.message-form-container textarea {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.6em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: transparent;
+  height: 1em;
+  width: 20em;
+  transition: border-color 0.25s;
+}
