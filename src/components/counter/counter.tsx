@@ -16,8 +16,9 @@ export default function Counter () {
   }
 
   return <div onClick={handleClick} style={{
-    background: "rgba(0, 0, 0, 0.3)",
+    background: "rgba(0, 0, 0, 0.4)",
     borderRadius: "10px",
+    color: "#fff",
     cursor: "pointer",
     left: "50%",
     transform: "translateX(-50%)",
@@ -25,6 +26,7 @@ export default function Counter () {
     padding: "0.5em 1em",
     position: "fixed",
     textAlign: "center",
+    zIndex: "1",
   }}>{
     isCollapsed
       ? `...`
