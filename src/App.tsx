@@ -6,7 +6,7 @@ import MessagesContext, { initialMessages, messagesReducer } from "./data/messag
 import "./App.css";
 
 function App() {
- const [messages, dispatch] = useReducer(messagesReducer, initialMessages);
+  const [messages, dispatch] = useReducer(messagesReducer, initialMessages);
 
   return <>
     <header className="page-header">

@@ -9,7 +9,7 @@
 
 .message-form-container textarea {
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid #ccc;
   padding: 0.6em;
   font-size: 1em;
   font-weight: 500;
@@ -18,4 +18,9 @@
   height: 1em;
   width: 20em;
   transition: border-color 0.25s;
+}
+
+.message-form-submit::after {
+  content: "📤";
+  margin-left: 0.5rem;
 }

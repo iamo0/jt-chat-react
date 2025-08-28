@@ -2,6 +2,7 @@ import "./message-form.css";
 
 import { useContext, type FormEvent } from "react";
 import MessagesContext from "../../data/messages-context";
+import Button from "../button/button";
 
 export default function MessageForm() {
   const messagesContextData = useContext(MessagesContext);
@@ -31,6 +32,6 @@ export default function MessageForm() {
 
   return <form className="message-form-container" onSubmit={handleFormSubmit}>
     <textarea name="message-text" id=""></textarea>
-    <button type="submit">Отправить сообщение</button>
+    <Button className="message-form-submit" type="submit">Отправить сообщение</Button>
   </form>;
 };
