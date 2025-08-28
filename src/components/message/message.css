@@ -5,14 +5,30 @@
   color: #fff;
   max-width: 50vw;
   padding: 20px;
+  position: relative;
+  z-index: 0;
 }
 
 .message p {
   padding: 0 0 0.3em;
-  margin: 0;
+  margin: 0 1em 0 0;
 }
 
 .message-details {
   font-size: 80%;
   padding-bottom: 0;
+}
+
+.message-delete {
+  border-color: transparent;
+  font-size: 0;
+  padding: 0.3rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+}
+
+.message-delete::after {
+  content: "🗑️";
+  font-size: 0.7rem;
 }

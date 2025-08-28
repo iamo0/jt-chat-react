@@ -3,7 +3,7 @@ import { useReducer } from "react";
 import MessageForm from "./components/message-form/message-form";
 import Messages from "./components/messages/messages";
 import MessagesContext, { initialMessages, messagesReducer } from "./data/messages-context";
-import Button from "./components/button/button";
+import ButtonWithConfirmation from "./components/button/button-with-confirmation";
 
 function App() {
   const [messages, dispatch] = useReducer(messagesReducer, initialMessages);
@@ -11,7 +11,11 @@ function App() {
   return <>
     <header className="page-header">
       <h1 className="page-title">Online Chat</h1>
-      <Button className="page-header-logout">Log out</Button>
+      <ButtonWithConfirmation
+        className="page-header-logout"
+        confirmationMessage="Вы действительно хотите выйти из чата?"
+        onClick={() => { alert("Выйдено из чата"); }}
+      >Log out</ButtonWithConfirmation>
     </header>
     <main className="page-main">
       <MessagesContext.Provider value={[messages, dispatch]}>

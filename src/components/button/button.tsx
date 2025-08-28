@@ -1,9 +1,10 @@
 import "./button.css";
-import type { PropsWithChildren } from "react";
+import type { MouseEventHandler, PropsWithChildren } from "react";
 
-interface ButtonProps extends PropsWithChildren {
+export interface ButtonProps extends PropsWithChildren {
   className?: string,
   disabled?: boolean,
+  onClick?: MouseEventHandler,
   type?: "button" | "submit" | "reset",
 }
 
@@ -11,11 +12,13 @@ export default function Button({
   children,
   className = "",
   disabled = false,
-  type = "button"
+  onClick = () => {},
+  type = "button",
 }: ButtonProps) {
   return <button
     className={`my-button ${className}`}
     disabled={disabled}
+    onClick={onClick}
     type={type}
   >{children}</button>
 };
