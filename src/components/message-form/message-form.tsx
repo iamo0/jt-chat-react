@@ -1,10 +1,11 @@
 import "./message-form.css";
 
-import { useContext, type FormEvent } from "react";
+import { useContext, useState, type ChangeEvent, type FormEvent } from "react";
 import MessagesContext from "../../data/messages-context";
 import Button from "../button/button";
 
 export default function MessageForm() {
+  const [currentMessage, setCurrentMessage] = useState("");
   const messagesContextData = useContext(MessagesContext);
 
   if (messagesContextData === null) {
@@ -28,10 +29,24 @@ export default function MessageForm() {
     });
 
     form.reset();
+    setCurrentMessage("");
+  }
+
+  function handleMessageChange(evt: ChangeEvent<HTMLTextAreaElement>) {
+    setCurrentMessage(evt.target.value);
   }
 
   return <form className="message-form-container" onSubmit={handleFormSubmit}>
-    <textarea name="message-text" id=""></textarea>
-    <Button className="message-form-submit" type="submit">Отправить сообщение</Button>
+    <textarea
+      value={currentMessage}
+      id=""
+      name="message-text"
+      onChange={handleMessageChange}
+    ></textarea>
+    <Button
+      className="message-form-submit"
+      disabled={currentMessage.trim() === ""}
+      type="submit"
+    >Отправить сообщение</Button>
   </form>;
 };

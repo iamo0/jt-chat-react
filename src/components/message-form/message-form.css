@@ -20,6 +20,10 @@
   transition: border-color 0.25s;
 }
 
+.message-form-submit {
+  white-space: nowrap;
+}
+
 .message-form-submit::after {
   content: "📤";
   margin-left: 0.5rem;
