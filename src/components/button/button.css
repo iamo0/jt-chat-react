@@ -10,7 +10,7 @@
   transition: border-color 0.25s;
 }
 
-.my-button:hover {
+.my-button:not(:disabled):hover {
   border-color: #646cff;
 }
 
