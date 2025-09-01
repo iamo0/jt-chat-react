@@ -1,0 +1,65 @@
+/* контейнеры */
+.fx-card {
+    max-width: 480px;
+    width: 100%;
+    margin: 16px auto;
+    padding: 20px;
+    border-radius: 16px;
+    background: #0f172a;          /* тёмный индиго */
+    box-shadow: 0 10px 25px rgba(2,6,23,.35);
+    color: #e2e8f0;
+}
+.fx-title { margin: 0 0 16px; font-size: 20px; }
+
+/* формы */
+.fx-form { display: grid; gap: 12px; }
+
+/* поле */
+.fx-field { display: grid; gap: 6px; }
+.fx-label { font-size: 13px; color: #94a3b8; }
+.fx-input {
+    border: 1px solid #334155;
+    background: #0b1220;
+    color: #e2e8f0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+.fx-input:focus { border-color: #60a5fa; box-shadow: 0 0 0 4px rgba(96,165,250,.15); }
+.fx-input--error { border-color: #f87171; }
+
+.fx-error { color: #fca5a5; font-size: 12px; }
+
+/* пароль со значком */
+.fx-password { position: relative; display: flex; align-items: center; }
+.fx-input--password { padding-right: 40px; }
+.fx-eye {
+    position: absolute;
+    right: 8px; top: 50%; transform: translateY(-50%);
+    border: none; background: transparent; cursor: pointer;
+    font-size: 16px;
+}
+
+/* кнопка */
+.fx-btn {
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .05s ease, filter .2s ease;
+}
+.fx-btn:hover { filter: brightness(1.05); }
+.fx-btn:active { transform: translateY(1px); }
+.fx-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* чекбокс */
+.fx-checkbox {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: #cbd5e1;
+}
