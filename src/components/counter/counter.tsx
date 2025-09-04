@@ -1,15 +1,9 @@
-import { useContext, useState } from "react";
-import MessagesContext from "../../data/messages-context";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Counter () {
-  const messagesContextVal = useContext(MessagesContext);
+  const messages = useSelector((state) => state.messages);
   const [isCollapsed, setIsCollapsed] = useState(false);
-
-  if (messagesContextVal === null) {
-    return <></>;
-  }
-
-  const [messages] = messagesContextVal;
 
   function handleClick() {
     setIsCollapsed(!isCollapsed);

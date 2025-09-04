@@ -1,18 +1,13 @@
 import "./message-form.css";
 
-import { useContext, useState, type ChangeEvent, type FormEvent } from "react";
-import MessagesContext from "../../data/messages-context";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import Button from "../button/button";
+import { useDispatch } from "react-redux";
+import { createMessage } from "../../data/message-reducer";
 
 export default function MessageForm() {
   const [currentMessage, setCurrentMessage] = useState("");
-  const messagesContextData = useContext(MessagesContext);
-
-  if (messagesContextData === null) {
-    return <></>;
-  }
-
-  const [, dispatch] = messagesContextData;
+  const dispatch = useDispatch();
 
   function handleFormSubmit(evt: FormEvent<HTMLFormElement>) {
     evt.preventDefault();
@@ -20,13 +15,9 @@ export default function MessageForm() {
     const form = evt.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    dispatch({
-      type: "CREATE",
-      payload: {
-        author: "me",
-        text: formData.get("message-text") as string,
-      },
-    });
+    dispatch(createMessage({
+      text: formData.get("message-text") as string,
+    }));
 
     form.reset();
     setCurrentMessage("");

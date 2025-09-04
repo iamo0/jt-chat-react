@@ -1,69 +1,130 @@
-# React + TypeScript + Vite
+# Работа с данными в приложениях
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React — это библиотека для __отображения__ данных.
+Кроме отображения данных, чтобы данные появились на фронте, нам нужно
+эти данные:
 
-Currently, two official plugins are available:
+1. Скачать
+2. Сохранить
+3. Предоставить к ним доступ
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
+```jsx
+// data.js
+const data = [
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
+    text: "",
+    author: "",
   },
-])
+  {
+    text: "",
+    author: "",
+  },
+];
+
+export default data;
+
+// messages.jsx
+// props
+// state
+export default function Messages() {
+  return <>
+    {data.map((m) => <div>m.text</div>)}
+  </>;
+};
+
+// anywhereelse.js
+// NB! Doesn't work
+data[0].text = "New text";
+
+// counter.jsx
+export default function Counter() {
+  // Descructive action
+  // Массив обнулится
+  if (data.length = 0) {
+    return null;
+  }
+
+  return <>Всего сообщений: {data.length}</>;
+};
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Задачи при работе с данными:
+1. __Сделать данные динамическими__ — то есть _добавить некую команду_, которая
+   обновит данные так, чтобы все компоненты могли эти данные подхватить
+   и отобразить актуальное состояние
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. __Защитить данные__ — сделать так, чтобы с данными не происходило 
+   "descructive" действий, то есть любая операция с данными создавала
+   _новую копию состояния_
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Использование State или Reducer уже решает эту задачу
+1. Что state, что reducer создаются с помощью хука и т.о. они привязываются
+   к компоненту, который смотрит на их состояние
+
 ```
+- App
+  - Messages
+    - Counter
+    - Fragment
+      - Message
+      - Message
+```
+
+---
+
+Данные бывают разного рода
+- Данные скачанные с сервера
+  - Информация об авторизации — создать пользователя, удалить пользователя, обновить, изменить пользователя
+  - Данные приложения — список сообщений
+- Локальные данные
+  - Тема
+  - Варианты оформления
+  - Лайки для неавторизованных пользователей
+
+```jsx
+const authReducer = useReducer();
+const messagesReducer = useReducer();
+const themeReducer = useReducer();
+const uiReducer = useReducer();
+const likesReducer = useReducer();
+```
+
+Каждый редьюсер это накладные расходы на:
+- сам по себе reducer пишется сложно
+  - actions
+  - payload
+  - важно не ошибиться в сохранении иммутабельного состояния
+- useReducer
+- контексты
+
+А еще данные бывают асинхронно полученные!
+
+---
+
+Redux — это библиотека, которая реализует паттерн работы с данными, который
+называется FLUX
+
+MVP  2010
+MVC  2010
+MVVM 2010
+
+FLUX
+1. Единый источник правды
+2. Состояние только для чтения
+3. Изменения выполняются чистыми фунциями
+
+Однонаправленный поток изменения данных
+
+(store) ==> (data)
+(store') ==> (data)
+
+1. Библиотека Redux дает возможность использовать единое хранилище, 
+   абстракции в котором разделяются с помощью "кусков" ("отрезов") — slices
+   где каждый slice это набор CRUD действий для отдельного слоя логики
+   работы с данными
+
+2. Т.к. FLUX это абстрактный паттерн, библиотека Redux через т.н. "биндинги"
+   дает возможность исопльзовать этот паттерн в разных UI-библиотеках (React,
+   Preact, Vue)
+
+3. 
