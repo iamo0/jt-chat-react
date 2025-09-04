@@ -1,5 +1,5 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
-import type { Message } from "./messages-context";
+import type Message from "../types/message";
 
 const createMessage = createAction<{ text: string }>("CREATE");
 const deleteMessage = createAction<{ id: number }>("DELETE");
