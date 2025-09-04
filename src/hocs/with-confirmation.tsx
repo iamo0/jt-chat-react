@@ -6,7 +6,7 @@ import {
 } from "react";
 
 type ConfirmationProps = {
-  confirmationMessage: string,
+  confirmationMessage?: string,
   onClick?: MouseEventHandler,
 };
 
@@ -16,7 +16,7 @@ export default function withConfirmation<P>(Component: ComponentType<P>) {
     const propsToPass = rest as P;
 
     function handleClick(evt: MouseEvent) {
-      if (!confirm(confirmationMessage)) {
+      if (confirmationMessage && !confirm(confirmationMessage)) {
         evt.preventDefault();
         return;
       }

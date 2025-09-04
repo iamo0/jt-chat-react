@@ -11,6 +11,12 @@
   top: 0.8rem;
 }
 
+.page-header-login {
+  position: absolute;
+  right: 1rem;
+  top: 0.8rem;
+}
+
 .page-title {
   font-weight: 300;
   margin: 0;
