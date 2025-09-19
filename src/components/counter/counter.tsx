@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import type { StoreState } from "../../data/messages-store";
+import type { StoreState } from "../../data/store";
 
 export default function Counter () {
   const messages = useSelector((state: StoreState) => state.messages);

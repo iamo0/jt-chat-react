@@ -6,7 +6,7 @@ import ButtonWithConfirmation from "./components/button/button-with-confirmation
 import AuthGate from "./components/auth/AuthGate";
 import Button from "./components/button/button.tsx";
 import { Provider } from "react-redux";
-import messageStore from "./data/messages-store.ts";
+import messageStore from "./data/store.ts";
 
 function App() {
   return (

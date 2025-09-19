@@ -2,7 +2,7 @@ import "./messages.css";
 import Message from "../message/message";
 import Counter from "../counter/counter";
 import { useSelector } from "react-redux";
-import type { StoreState } from "../../data/messages-store";
+import type { StoreState } from "../../data/store";
 
 interface MessagesProps {
   className: string,
