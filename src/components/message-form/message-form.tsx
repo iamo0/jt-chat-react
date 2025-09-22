@@ -17,7 +17,7 @@ export default function MessageForm() {
 
     dispatch(createMessage({
       text: formData.get("message-text") as string,
-    }));
+    }) as never);
 
     form.reset();
     setCurrentMessage("");
