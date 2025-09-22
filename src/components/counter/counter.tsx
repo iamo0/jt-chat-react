@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import type { StoreState } from "../../data/store";
 
 export default function Counter () {
-  const messages = useSelector((state: StoreState) => state.messages);
+  const messages = useSelector((state: StoreState) => state.messageLayer.messages);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   function handleClick() {

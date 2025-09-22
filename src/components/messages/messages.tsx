@@ -9,7 +9,7 @@ interface MessagesProps {
 }
 
 export default function Messages({ className }: MessagesProps) {
-  const messages = useSelector((state: StoreState) => state.messages);
+  const messages = useSelector((state: StoreState) => state.messageLayer.messages);
 
   return <>
     <Counter />

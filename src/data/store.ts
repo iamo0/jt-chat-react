@@ -1,16 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import messageReducer from "./message-reducer";
-import type Message from "../types/message";
+import messageReducer, { type MessageStoreData } from "./message-reducer";
 import userReducer from "./user-reducer";
 
 export interface StoreState {
-  messages: Message[],
+  messageLayer: MessageStoreData,
+  userLayer: never,
 }
 
 const messageStore = configureStore({
   reducer: {
-    messages: messageReducer,
-    user: userReducer,
+    messageLayer: messageReducer,
+    userLayer: userReducer,
   },
 });
 
