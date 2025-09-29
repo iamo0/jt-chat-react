@@ -28,13 +28,14 @@
 
 .pageContainer {
   display: flex;
-  gap: 50px;
+  gap: 40px;
   width: 100%;
 }
 
 .pageSidebar {
   flex-shrink: 0;
   min-width: 20vw;
+  padding-top: 20px;
 }
 
 .sidebarNavigation {
@@ -46,5 +47,6 @@
 
 .pageMain {
   flex-grow: 1;
+  padding: 20px;
 }
 
