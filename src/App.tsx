@@ -7,6 +7,7 @@ import AuthGate from "./components/auth/AuthGate";
 import Button from "./components/button/button.tsx";
 import { Provider } from "react-redux";
 import messageStore from "./data/store.ts";
+import { Link } from "react-router";
 
 function App() {
   return <AuthGate
@@ -15,28 +16,33 @@ function App() {
         <header className="page-header">
           <h1 className="page-title">Online Chat</h1>
 
-          {isAuth ? (
-            <ButtonWithConfirmation
-              className="page-header-logout"
-              confirmationMessage="Вы действительно хотите выйти из чата?"
-              onClick={() => {
-                logout();
-                alert("Выйдено из чата");
-              }}
-            >
-              Sign out ({user?.username})
-            </ButtonWithConfirmation>
-          ) : (
-            <Button
-              className="page-header-login"
-              onClick={() => {
-                login();
-                alert("Успешная авторизация");
-              }}
-            >
-              Sign in
-            </Button>
-          )}
+          <div className="page-header-nav">
+            <Link to="/blog">Blog</Link>
+
+            <div className="page-header-controls">
+              <Link to="/signup">Sign up</Link>
+              {isAuth ? (
+                <ButtonWithConfirmation
+                  confirmationMessage="Вы действительно хотите выйти из чата?"
+                  onClick={() => {
+                    logout();
+                    alert("Выйдено из чата");
+                  }}
+                >
+                  Sign out ({user?.username})
+                </ButtonWithConfirmation>
+              ) : (
+                <Button
+                  onClick={() => {
+                    login();
+                    alert("Успешная авторизация");
+                  }}
+                >
+                  Sign in
+                </Button>
+              )}
+            </div>
+          </div>
         </header>
 
         <main className="page-main">

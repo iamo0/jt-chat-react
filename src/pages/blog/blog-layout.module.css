@@ -1,0 +1,49 @@
+.pageHeader {
+  background: #333;
+  box-sizing: border-box;
+  color: #fff;
+  height: 10vh;
+}
+
+.pageHeaderNav {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 1rem;
+  top: 0.8rem;
+}
+
+.pageTitle {
+  font-weight: 300;
+  margin: 0;
+  text-align: center;
+}
+
+.pageNav {
+  position: absolute;
+  left: 1rem;
+  top: 1.3rem;
+}
+
+.pageContainer {
+  display: flex;
+  gap: 50px;
+  width: 100%;
+}
+
+.pageSidebar {
+  flex-shrink: 0;
+  min-width: 20vw;
+}
+
+.sidebarNavigation {
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.pageMain {
+  flex-grow: 1;
+}
