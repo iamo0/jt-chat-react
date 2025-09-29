@@ -1,5 +1,12 @@
+import "./blog-layout.css";
 import styles from "./blog-layout.module.css";
-import { Link, NavLink } from "react-router";
+
+import { Link, NavLink, Outlet } from "react-router";
+
+const getActiveClassName = ({ isActive } : {
+  isActive: boolean,
+  isPending: boolean,
+}) => isActive ? "page-link-active" : ``;
 
 export default function BlogLayout() {
   return <>
@@ -10,20 +17,19 @@ export default function BlogLayout() {
     <main className={styles.pageContainer}>
       <aside className={styles.pageSidebar}>
         <nav className={styles.sidebarNavigation}>
-          <NavLink to="">Intro to blog</NavLink>
+          <NavLink to="" className={getActiveClassName} end>Intro to blog</NavLink>
           <hr style={{
             border: 0,
             borderBottom: "solid 1px #999",
             width: "100%",
           }} />
-          <NavLink to="">Article 1</NavLink>
-          <NavLink to="">Article 2</NavLink>
-          <NavLink to="">Article 3</NavLink>
+          <NavLink to="/blog/1" className={getActiveClassName} end>Article 1</NavLink>
+          <NavLink to="/blog/2" className={getActiveClassName} end>Article 2</NavLink>
+          <NavLink to="/blog/3" className={getActiveClassName}>Article 3</NavLink>
         </nav>
       </aside>
       <section className={styles.pageMain}>
-        <h1>Welcome to our blog</h1>
-        <p>Check out all the new articles posted by out authors.</p>
+        <Outlet />
       </section>
     </main>
   </>;
