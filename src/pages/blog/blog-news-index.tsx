@@ -63,7 +63,7 @@ export default function BlogNewsIndex() {
       gap: "20px",
       padding: "20px 0",
     }}>
-      {authors.map(({bio, name}) => <article style={{
+      {authors.map(({bio, name}) => <article key={`article-${name.toLowerCase().replaceAll(" ", "-")}`} style={{
         border: "dotted 1px #999",
         borderRadius: "10px",
         padding: "10px",
